@@ -1,99 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>User Info Form</title>
-  <style>
-    body {
-      background: linear-gradient(135deg, #e0eafc, #cfdef3);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-
-    .form-container {
-      background: white;
-      padding: 30px 40px;
-      border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      width: 300px;
-      text-align: center;
-      animation: fadeIn 0.6s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    h2 {
-      margin-bottom: 20px;
-      color: #333;
-    }
-
-    input {
-      width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 14px;
-    }
-
-    button {
-      margin-top: 12px;
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-size: 15px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #0056b3;
-    }
-
-    #output {
-      margin-top: 20px;
-      color: #333;
-      font-size: 1rem;
-    }
-  </style>
+  <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
+  <div class="container">
+    <h1>User Info Form</h1>
 
-  <div class="form-container">
-    <h2>User Details</h2>
-    <input type="text" id="name" placeholder="Enter your name">
-    <input type="date" id="dob" placeholder="Enter DOB">
-    <input type="text" id="college" placeholder="Enter college name">
-    <button onclick="submitForm()">Submit</button>
-    <p id="output"></p>
+    <form id="infoForm">
+      <div class="input-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" placeholder="John Doe" required />
+      </div>
+
+      <div class="input-group">
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" max="" required />
+      </div>
+
+      <div class="input-group">
+        <label for="language">Favorite Programming Language</label>
+        <select id="language" required>
+          <option value="">--Select--</option>
+          <option value="Java">Java</option>
+          <option value="C">C</option>
+          <option value="C++">C++</option>
+          <option value="JavaScript">JavaScript</option>
+          <option value="Python">Python</option>
+        </select>
+      </div>
+
+      <div class="button-group">
+        <button type="button" id="submitBtn">Submit</button>
+        <button type="button" id="resetBtn" class="reset">Reset</button>
+      </div>
+    </form>
+
+    <div id="result" class="result-box"></div>
   </div>
 
-  <script>
-    function submitForm() {
-      var name = document.getElementById("name").value.trim();
-      var dob = document.getElementById("dob").value;
-      var college = document.getElementById("college").value.trim();
-      var result = document.getElementById("output");
-
-      if (!name || !dob || !college) {
-        result.textContent = "Please fill in all the fields.";
-        result.style.color = "crimson";
-        return;
-      }
-
-      result.style.color = "#222";
-      result.textContent = `Hello ${name}! You were born on ${dob}, and you study at ${college}.`;
-    }
-  </script>
-
+  <script src="./script.js"></script>
 </body>
 </html>
